@@ -8,6 +8,7 @@
         </div>
         <div v-else id="suppDetailsDiv">
             <h2>{{ fullName }}</h2>
+            <h4>{{ support.position }} </h4>
             <h4>Experience: {{ support.yearsOfExperience }} years</h4>
             <h4>Rate: ${{ support.hourlyRate }}/Hour</h4>
             <p v-text="support.description"></p>
@@ -36,7 +37,7 @@ export default {
     props: ['support'],
     computed: {
         supportContactLink() {
-            return this.$route.path + "/" + this.support.id + "/support";
+            return this.$route.path + "/" + this.support.id + "/contact";
         },
         supportDetailsLink() {
             return this.$route.path + "/" + this.support.id;

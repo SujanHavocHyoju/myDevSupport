@@ -7,10 +7,14 @@
                     <base-button link to="/register" style="float: right;">Register as a Dev Support</base-button>
                     <br><br>
                     <h3>Find a Support</h3>
-                    <base-search @search="updateSearch" :search-term="enteredSearchTerm"></base-search>
                     <div>
-                        <base-button mode="smlBtn" @click="sort('asc')" :class="{ selected: sorting === 'asc' }">Sort Ascending</base-button>
-                        <base-button mode="smlBtn" @click="sort('desc')" :class="{ selected: sorting === 'desc' }">Sort Descending</base-button>
+                        <span>
+                            <base-search @search="updateSearch" :search-term="enteredSearchTerm"></base-search>
+                        </span>
+                        <span>
+                            <base-button mode="smlBtn" @click="sort('asc')" :class="{ selected: sorting === 'asc' }">Sort Ascending</base-button>
+                            <base-button mode="smlBtn" @click="sort('desc')" :class="{ selected: sorting === 'desc' }">Sort Descending</base-button>
+                        </span>
                     </div>
                     <ul v-if="hasSupports">
                         <support-item v-for="support in displayedSupports" :key="support.id" :support="support"

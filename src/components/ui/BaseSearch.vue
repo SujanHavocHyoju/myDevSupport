@@ -1,6 +1,6 @@
 <template>
   <form>
-    <input type="search" @input="search" :value="searchTerm" placeholder="Filter items" />
+    <input type="search" @input="search" :value="searchTerm" placeholder="Search By Name" />
   </form>
 </template>
 
@@ -17,12 +17,18 @@ export default {
 </script>
 
 <style scoped>
+
+form {
+  float: left;
+}
+
 input {
   font: inherit;
-  width: 100%;
+  width: 150%;
   display: block;
   padding: 0.15rem;
   border: 1px solid #ccc;
+  margin-top: 10px;
 }
 
 input:focus {
