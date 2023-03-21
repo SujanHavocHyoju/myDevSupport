@@ -57,22 +57,22 @@
             <label for="skills">Skills</label>
             <!-- <input type="text" id="skills" v-model.trim="skillItem" @blur="recordSkills" />  -->
             <input type="text" id="skills" v-model.trim="skillItem" @blur="clearValidity('skills')"/> 
-            <button @click.prevent="recordSkills()">Add Skills</button>
+            <button @click.prevent="recordSkills()" class="addBtn">Add Skills</button>
             <base-badge v-for="skill in skills.val" :key="skill" :title="skill"></base-badge>
             <p v-if="!skills.isValid">Atlease one relevant skill should be entered.</p>
         </div>
         <div class="form-control">
             <label for="social">Social accounts</label>
             <!-- <input type="text" id="social" v-model.trim="socialItem" @blur="recordSocial" />  -->
-            <input type="text" id="social" v-model.trim="socialItem"/> 
-            <button @click.prevent="recordSocial()">Add More</button>
+            <input type="text" id="social" v-model.trim="socialItem" title="Enter link for any social networks."/> 
+            <button @click.prevent="recordSocial()" class="addBtn">Add Accounts</button>
             <base-badge v-for="soc in social" :key="soc" :title="soc"></base-badge>
         </div>
         <div class="form-control">
             <label for="portfolio">Portfolio</label>
             <!-- <input type="text" id="portfolio" v-model.trim="portfolioItem" @blur="recordPortfolio" />  -->
-            <input type="text" id="portfolio" v-model.trim="portfolioItem"/> 
-            <button @click.prevent="recordPortfolio()">Add Projects</button>
+            <input type="text" id="portfolio" v-model.trim="portfolioItem" title="Enter link for any projects."/> 
+            <button @click.prevent="recordPortfolio()" class="addBtn">Add Projects</button>
             <base-badge v-for="proj in portfolio" :key="proj" :title="proj"></base-badge>
         </div>
         <p v-if="!formIsValid">Please fix the above errors and submit again</p>
@@ -261,5 +261,11 @@ h3 {
 .invalid input,
 .invalid textarea {
     border: 1px solid red;
+}
+
+.addBtn {
+    color: #535ed1;
+    padding: 0.5rem 0.5rem !important;
+    margin-top: 5px !important;
 }
 </style>

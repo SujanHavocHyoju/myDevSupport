@@ -9,8 +9,8 @@
             <main>
                 <base-container>
                     <base-card>
-                        <base-button mode="outline" @click="loadSupports(true)" style="float: left;">Refresh</base-button>
-                        <base-button link to="/register" v-if="isLoggedIn && !isSupport && !isLoading" style="float: right;">Register as a Dev Support</base-button>
+                        <base-button mode="outline" @click="loadSupports(true)" class="flLeft">Refresh</base-button>
+                        <base-button link to="/register" v-if="isLoggedIn && !isSupport && !isLoading" class="flRight">Register as a Dev Support</base-button>
                         <base-button link to="/auth?redirect=register" v-if="!isLoggedIn">Login to Register as Coach</base-button>
                         <br><br>
                         <h3>Find a Support</h3>

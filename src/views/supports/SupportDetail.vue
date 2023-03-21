@@ -26,9 +26,10 @@
                 <div v-if="portfolio && portfolio.length > 0">
                     <p><strong>Projects:</strong></p>
                     <span v-for="proj in portfolio" :key="proj.title">
-                        <i><strong>{{ proj.title }}</strong></i> :
-                        <a :href="'//' + proj.url" target="_blank"> {{ proj.url }}</a>
-                        <p>{{ proj.description }}</p>
+                        <span v-if="proj.title"><i><strong>{{ proj.title }}</strong></i> : </span>
+                        <a v-if="proj.url" :href="'//'+proj.url" target="_blank"> {{ proj.url }}</a>
+                        <a v-else :href="'//'+proj" target="_blank"> {{ proj }}</a>
+                        <p v-if="proj.description">{{ proj.description }}</p>
                     </span>
                 </div>
                 <base-button link :to="contactLink">Contact</base-button>
@@ -46,7 +47,7 @@ export default {
     props: ['id'],
     data() {
         return {
-            selectedSupport: null
+            selectedSupport: null,
         }
     },
     created() {
@@ -58,6 +59,9 @@ export default {
             return this.selectedSupport.firstName + " " + this.selectedSupport.lastName;
         },
         contactLink() {
+            if(this.$route.path.includes("/contact")){
+                return this.$route.path;
+            }
             return this.$route.path + "/contact";
         },
         rate() {

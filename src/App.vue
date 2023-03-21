@@ -62,4 +62,12 @@ export default {
   opacity: 1;
   transform: translateY(0);
 }
+
+.flRight{
+  float: right;
+}
+
+.flLeft{
+  float: left;
+}
 </style>

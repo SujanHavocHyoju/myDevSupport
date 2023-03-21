@@ -30,10 +30,11 @@
             </div>
             <div v-if="support.portfolio && support.portfolio.length>0">
                 <p><strong>Projects:</strong></p>
-                <span v-for="proj in support.portfolio" :key="proj.title">
-                    <i><strong>{{ proj.title }}</strong></i> : 
-                    <a :href="'//'+proj.url" target="_blank"> {{ proj.url }}</a>
-                    <p>{{ proj.description }}</p>
+                <span v-for="proj in support.portfolio" :key="proj">
+                    <span v-if="proj.title"><i><strong>{{ proj.title }}</strong></i> : </span>
+                    <a v-if="proj.url" :href="'//'+proj.url" target="_blank"> {{ proj.url }}</a>
+                    <a v-else :href="'//'+proj" target="_blank"> {{ proj }}</a>
+                    <p v-if="proj.description">{{ proj.description }}</p>
                 </span>
             </div>
             <div class="actions">

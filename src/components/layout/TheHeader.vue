@@ -3,7 +3,7 @@
     <nav>
       <h1><router-link to="/"><img src="@/assets/logo.png" id="logo" alt="Logo"><span id="logoText">My Dev Support</span></router-link></h1>
       <ul>
-        <li><router-link to="/">Home</router-link></li>
+        <li v-if="!isLoggedIn"><router-link to="/">Home</router-link></li>
         <li><router-link to="/supports">All Supports</router-link></li> 
         <li><router-link to="/posts">All Posts</router-link></li> <!-- add v-if="isLoggedIn" -->
         <li v-if="isLoggedIn && isSupport"><router-link to="/requests">Requests</router-link></li>
