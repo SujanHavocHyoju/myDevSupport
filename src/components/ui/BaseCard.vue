@@ -10,7 +10,7 @@
   padding: 1rem;
   margin: 2rem auto;
   max-width: 44rem;
-  height: 32rem;
+  /* height: 32rem; */
   max-height: 32rem;
   overflow: auto;
 }

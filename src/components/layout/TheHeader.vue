@@ -6,8 +6,8 @@
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/supports">All Supports</router-link></li> 
         <li><router-link to="/posts">All Posts</router-link></li> <!-- add v-if="isLoggedIn" -->
-        <li v-if="isLoggedIn"><router-link to="/requests">Requests</router-link></li>
-        <li v-else><router-link to="/auth">Login</router-link></li>
+        <li v-if="isLoggedIn && isSupport"><router-link to="/requests">Requests</router-link></li>
+        <li v-if="!isLoggedIn"><router-link to="/auth">Login</router-link></li>
         <li v-if="isLoggedIn">
           <base-button @click="logout">Logout</base-button>
         </li>
@@ -21,11 +21,14 @@ export default {
     isLoggedIn() {
       return this.$store.getters.isAuthenticated;
     },
+    isSupport(){
+      return this.$store.getters['supports/isSupport'];
+    }
   },
   methods: {
     logout() {
       this.$store.dispatch('logout');
-      this.$router.replace('/coaches');
+      this.$router.replace('/supports');
     }
   }
 }

@@ -83,4 +83,9 @@ button.selected {
   background-color: #5454bd;
   color: white;
 }
+
+button.activated {
+  background-color: #7878a0;
+  color: white;
+}
 </style>

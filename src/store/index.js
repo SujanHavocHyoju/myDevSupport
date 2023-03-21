@@ -13,7 +13,7 @@ const store = createStore({
     profile: profileModule,
     requests: requestsModule,
     supports: supportsModule
-  }
+  },
 });
 
 export default store;

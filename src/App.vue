@@ -1,7 +1,9 @@
 <template>
   <the-header/>
   <router-view v-slot="slotProps">
-    <component :is="slotProps.Component"></component>
+    <transition name="route" mode="out-in">
+      <component :is="slotProps.Component"></component>
+    </transition>
   </router-view>
 </template>
 <script>
@@ -10,6 +12,21 @@ import TheHeader from './components/layout/TheHeader'
 export default {
   components: {
     TheHeader
+  },
+  created(){
+    this.$store.dispatch('autoLogin');
+  },
+  computed: {
+    didAutoLogout() {
+      return this.$store.getters.didAutoLogout;
+    }
+  },
+  watch: {
+    didAutoLogout(currentValue, oldValue) {
+      if(currentValue && currentValue !== oldValue){
+        this.$router.replace('/supports');
+      }
+    }
   }
 }
 </script>
@@ -22,17 +39,27 @@ export default {
   color: #2c3e50;
 }
 
-/* nav {
-  padding: 30px;
+.route-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
 }
 
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-  text-decoration: none;
+.route-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 
-nav a.router-link-exact-active {
-  color: #8488b9;
-} */
+.route-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.route-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.route-enter-to,
+.route-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>

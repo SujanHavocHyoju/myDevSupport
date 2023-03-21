@@ -10,19 +10,11 @@ export default {
             supports: [
                 {
                     id: 's1',
-                    firstName: 'Max',
+                    firstName: 'Dax',
                     lastName: 'Dev Guru',
-                    fullName: 'Max Dev Guru',
-                    areas: ['frontend', 'backend', 'career', 'database', 'devops', 'networking', 'ui/ux', 'cloud'],
-                    skills: [{
-                        frontend: ['HTML, CSS, jQuery'],
-                        backend: ['Java, Python'],
-                        database: ['MySQL, MongoDB'],
-                        devops:['Jenkins'],
-                        mobile: ['Kotlin'],
-                        crossPlatform: ['Flutter'],
-                        tools: ['JIRA, Trello']
-                    }],
+                    fullName: 'Dax Dev Guru',
+                    areas: ['frontend', 'backend', 'database', 'devops', 'networking', 'ui/ux', 'cloud', 'career'],
+                    skills: ['HTML', 'CSS', 'jQuery', 'Java', 'MySQL', 'Jenkins', 'Flutter', 'Trello'],
                     position: 'Full Stack Developer',
                     description:
                         "I'm Maximilian and I've worked as a freelance web developer for years. Let me help you become a developer as well!",
@@ -35,7 +27,9 @@ export default {
                     id: 's2',
                     firstName: 'Noob',
                     lastName: 'Developer',
+                    fullName: 'Noob Developer',
                     areas: ['frontend', 'backend'],
+                    skills: ['HTML', 'CSS', 'jQuery', 'Java', 'Python', 'MySQL', 'MongoDB', 'Jenkins', 'Kotlin', 'Flutter', 'JIRA', 'Trello'],
                     position: 'Software Engineer',
                     description:
                         "I'm Maximilian and I've worked as a freelance web developer for years. Let me help you become a developer as well!",

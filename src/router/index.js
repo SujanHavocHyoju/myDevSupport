@@ -3,7 +3,7 @@ import store from '@/store/index';
 import HomeView from '@/views/HomeView.vue'
 import SupportsList from '@/views/supports/SupportsList'
 
-const SupportDetail = () =>  import('@/views/supports/SupportDetail');
+const SupportDetail = () => import('@/views/supports/SupportDetail');
 const SupportRegistration = () => import('@/views/supports/SupportRegistration');
 const ContactSupport = () => import('@/views/requests/ContactSupport');
 const RequestsReceived = () => import('@/views/requests/RequestsReceived');
@@ -34,13 +34,14 @@ const routes = [
     ]
   },
   {
-    path: '/register', component: SupportRegistration, 
-    // meta: { 
-    //   requiresAuth: true
-    // }
+    path: '/register', component: SupportRegistration,
+    meta: {
+      requiresAuth: true
+    }
   },
   {
-    path: '/requests', component: RequestsReceived, meta: { 
+    path: '/requests', component: RequestsReceived,
+    meta: {
       requiresAuth: true
     }
   },
@@ -50,7 +51,9 @@ const routes = [
     }
   },
   {
-    path: '/auth', component: UserAuth
+    path: '/auth', component: UserAuth, meta: {
+      requiresUnauth: true
+    }
   },
   {
     path: '/:notFound(.*)', component: () => import('@/views/NotFound')
@@ -62,13 +65,13 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach(function(to, from, next) {
-  if(to.meta.requiresAuth && !store.getters.isAuthenticated) {
-      next('/auth');
-  } else if(to.meta.requiresUnauth && store.getters.isAuthenticated) {
-      next('/supports');
+router.beforeEach(function (to, from, next) {
+  if (to.meta.requiresAuth && !store.getters.isAuthenticated) {
+    next('/auth');
+  } else if (to.meta.requiresUnauth && store.getters.isAuthenticated) {
+    next('/supports');
   } else {
-      next();
+    next();
   }
 });
 

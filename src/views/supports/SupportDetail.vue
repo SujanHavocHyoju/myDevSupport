@@ -9,10 +9,21 @@
                 <h4>Rate: ${{ rate }}/Hour</h4>
                 <p v-text="description"></p>
                 <div v-if="areas.length > 0">
-                    <p><strong>Skills:</strong></p>
+                    <p><strong>Ares of Expertise:</strong></p>
                     <base-badge v-for="area in areas" :key="area" :title="area"></base-badge>
                 </div>
-                <div v-if="portfolio.length > 0">
+                <div v-if="skills.length>0">
+                    <p><strong>Skills:</strong></p>
+                    <base-badge v-for="skill in skills" :key="skill"
+                            :title="skill"></base-badge>
+                </div>
+                <div v-if="social && social.length>0">
+                    <p><strong>Social Profiles:</strong></p>
+                    <span v-for="soc in social" :key="soc">
+                        <a :href="'//'+soc" target="_blank"> {{ soc }}</a>
+                    </span>
+                </div>
+                <div v-if="portfolio && portfolio.length > 0">
                     <p><strong>Projects:</strong></p>
                     <span v-for="proj in portfolio" :key="proj.title">
                         <i><strong>{{ proj.title }}</strong></i> :
@@ -43,6 +54,7 @@ export default {
     },
     computed: {
         fullName() {
+            console.log('SelecteSuport in SupportDetail.vue', this.selectedSupport);
             return this.selectedSupport.firstName + " " + this.selectedSupport.lastName;
         },
         contactLink() {
@@ -57,6 +69,9 @@ export default {
         areas() {
             return this.selectedSupport.areas;
         },
+        skills(){
+            return this.selectedSupport.skills;
+        },
         description() {
             return this.selectedSupport.description;
         },
@@ -65,6 +80,9 @@ export default {
         },
         portfolio() {
             return this.selectedSupport.portfolio;
+        },
+        social(){
+            return this.selectedSupport.social;
         }
 
     }

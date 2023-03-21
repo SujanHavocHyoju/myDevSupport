@@ -13,11 +13,22 @@
             <h4>Rate: ${{ support.hourlyRate }}/Hour</h4>
             <p v-text="support.description"></p>
             <div v-if="support.areas.length>0">
-                <p><strong>Skills:</strong></p>
+                <p><strong>Ares of Expertise:</strong></p>
                 <base-badge v-for="area in support.areas" :key="area"
                         :title="area"></base-badge>
             </div>
-            <div v-if="support.portfolio.length>0">
+            <div v-if="support.skills.length>0">
+                <p><strong>Skills:</strong></p>
+                <base-badge v-for="skill in support.skills" :key="skill"
+                        :title="skill"></base-badge>
+            </div>
+            <div v-if="support.social && support.social.length>0">
+                <p><strong>Social Profiles:</strong></p>
+                <span v-for="soc in support.social" :key="soc">
+                    <a :href="'//'+soc" target="_blank"> {{ soc }}</a>
+                </span>
+            </div>
+            <div v-if="support.portfolio && support.portfolio.length>0">
                 <p><strong>Projects:</strong></p>
                 <span v-for="proj in support.portfolio" :key="proj.title">
                     <i><strong>{{ proj.title }}</strong></i> : 
